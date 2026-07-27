@@ -1,0 +1,16 @@
+#navbar{
+    /*border: 1px solid red;*/
+    position: absolute;
+    top: 32%;
+    right: 120px;
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    row-gap: 20px;
+}
+
+#navbar > a{
+    color: white;
+    font-size: 3rem;
+    font-family: 'MedievalSharp', cursive;
+}

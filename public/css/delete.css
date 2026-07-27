@@ -1,0 +1,20 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main > button{
+    width: 70%;
+    border-radius: 15px;
+    border: none;
+    height: 50px;
+    font-size: 1.8rem;
+    margin-top: 20px;
+    background-color: #fdd592;
+}
+
+main > button:hover{
+    background-color: #ffc765;
+}

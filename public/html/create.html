@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a Page</title>
+    <link rel="stylesheet" href="../css/create.css">
+</head>
+<body>
+    <div class="sectiondiv">
+        <input type="text" placeholder="Page Title" class="bigInput" id="titleInput">
+        <label style="font-style: italic;">Parent page: </label>
+        <select id="parentInput"></select><br>
+        <textarea placeholder="Type the bio for this web page here" id="bioInput"></textarea>
+    </div>
+
+    <div id="cover" class="sectiondiv">
+        <h1>Cover</h1>
+        <input type="file" multiple id="files" style="display: block">
+        <div id="coverMaintenance">
+            <button id="addCoverSection">Add cover section</button>
+            <button id="addCoverData">Add data</button>
+        </div>
+    </div>
+
+    <div id="maintain" class="sectiondiv">
+        <button id="addSection">Add Section</button>
+        <button onclick="save()">Save</button>
+    </div>
+
+    <script src="../js/inject_head.js"></script>
+    <script src="../js/create.js"></script>
+</body>
+</html>

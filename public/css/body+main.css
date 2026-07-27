@@ -1,0 +1,35 @@
+body{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0px;
+    padding: 0px;
+}
+
+main{
+    position: relative;
+    margin: 100px 60px;
+    background-color: white;
+    padding: 30px;
+    overflow: hidden;
+    font-size: 1.1rem;
+    font-family: helvetica, arial, sans-serif;
+    z-index: 0;
+}
+
+header{
+    z-index: 1;
+}
+
+.searchLink, .searchLink:visited{
+    font-family: MedievalSharp;
+    color: #0C56A4;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.searchLink:hover, .searchLink:active{
+    color: #052444;
+    text-decoration: underline;
+}

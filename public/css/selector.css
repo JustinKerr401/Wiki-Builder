@@ -1,0 +1,70 @@
+body{
+    background-color: rgb(12, 90, 219);
+}
+
+main{
+    background-color: white;
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logo{
+    height: 300px;
+}
+
+.button-row{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.row-element{
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons{
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+    margin-bottom: 44px;
+}
+
+button{
+    border: 1px solid;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    padding: 20px 40px;
+    background-color: hsl(0, 0%, 89%);
+}
+
+button:hover{
+    background-color: hsl(0, 0%, 99%);
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    display: none;              /* Hidden initially */
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+.popup {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 350px;
+}

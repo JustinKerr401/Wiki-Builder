@@ -1,0 +1,75 @@
+/* ---------------------- Document wide stuff ---------------------- */
+body{
+    background-image: url("../images/background_image.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+main{
+    margin: 80px 10%;
+    background-color: white;
+    padding: 30px;
+    overflow: hidden;
+    font-size: 1.1rem;
+    font-family: helvetica, arial, sans-serif;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    background-color: hsl(0, 0%, 100%, .3);
+}
+
+header button{
+    height: 80%;
+    font-size: 1.2rem;
+}
+/* ---------------------- Text classes ---------------------- */
+#title{
+    font-size: 2.5rem;
+}
+
+section > p, #intro > p{
+    line-height: 1.75
+}
+
+/*#intro > p{
+    text-indent: 2em;
+}*/
+
+/* ---------------------- Table of contents ---------------------- */
+#toc{
+    border: 1px solid hsl(0, 0%, 0%, .3);
+    border-radius: 5px;
+    width: 30%;
+    margin: 0px;
+}
+
+#toc i, #toc h4{
+    padding: 5px;
+    font-size: 1.1rem;
+}
+
+#section_links{
+    box-sizing: border-box;
+    border-top: 1px solid hsl(0, 0%, 0%, .3);
+    padding: 5px;
+    line-height: 1.8;
+    width: 100%;
+}
+
+#section_links a{
+    color: black;
+    text-decoration: none;
+    background-color: transparent;
+    transition: background-color 0.5s ease; /* fade over 0.5s */
+}
+
+#section_links a:hover{
+    background-color: hsl(198, 100%, 79%);
+}

@@ -1,0 +1,83 @@
+section, .sectiondiv{
+    background-color: white;
+    margin: 20px;
+    padding: 20px;
+}
+
+.bigInput{
+    display: block;
+    height: 32px;
+    font-size: 1.5rem;
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.midInput{
+    display: block;
+    height: 25px;
+    font-size: 1.172rem;
+    margin-top: 10px;
+}
+
+textarea{
+    width: 97%;
+    height: 100px;
+    box-sizing: border-box;
+    margin: 10px 0px;
+}
+
+#coverMaintenance{
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+    margin-top: 20px;
+}
+
+    #coverMaintenance button{
+        font-size: 2rem;
+    }
+
+#mainSectDiv{
+    display: grid;
+    margin: auto;
+    width: 95%;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+}
+
+#mainSectDiv button{
+    font-size: 2rem;
+}
+
+#mainSectDiv button:hover{
+    font-weight: bold;
+}
+
+.purge input{
+    display: block;
+}
+
+#maintain{
+    display: flex;
+    justify-content: center;
+    column-gap: 30px;
+}
+
+#maintain > button{
+    font-size: 80px;
+    border-radius: 10px;
+}
+
+#maintain > button:hover{
+    background-color: hsl(180, 100%, 79%);
+}
+
+.textCursor {
+    border: none;
+    height: 6px;
+    background: black;
+    border-radius: 999px;
+}

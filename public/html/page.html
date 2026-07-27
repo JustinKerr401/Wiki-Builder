@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/page.css">
+</head>
+<body>
+
+    <main>
+        <div id="intro">
+            <button onclick="editPage()" id="editPageButton">Edit Page</button>
+            <button onclick="deletePage()" id="deletePageButton">Delete Page</button>
+        </div>
+
+        <div id="cover">
+            <div id="coverImageSwaps">
+
+            </div>
+        </div>
+        
+        <div id="toc">
+            <i class="fa-solid fa-list" id="bioReference"></i>
+            <h4 style="display: inline">Contents</h4>
+            <div id="section_links">
+
+            </div>
+        </div>
+
+    </main>
+    <script src="../js/inject_head.js"></script>
+    <script src="../js/page.js"></script>
+    <script>
+        if (title === "Home"){
+            const delPgBtn = document.getElementById("deletePageButton")
+            delPgBtn.remove()
+
+            const editPgBtn = document.getElementById("editPageButton")
+            editPgBtn.style.right = "10px"
+        }
+    </script>
+</body>
+</html>

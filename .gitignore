@@ -1,0 +1,10 @@
+# Environment variables
+.env
+
+# Images
+public/images/*
+!public/images/Wiki Builder Logo.png
+!public/images/Wiki Builder Icon.png
+!public/images/bar.png
+!public/images/Question mark.png
+steps.md

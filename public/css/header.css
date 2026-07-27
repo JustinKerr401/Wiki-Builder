@@ -1,0 +1,44 @@
+header{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    background-image: url("../images/bar.png");
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#logo{
+    max-height: 90px;
+    margin-top: 10px;
+}
+
+#header a{
+    font-family: 'MedievalSharp', cursive;
+    color: black;
+    text-decoration: none;
+    font-size: 32px;
+}
+
+#header input{
+    height: 28px;
+}
+
+#header a:hover{
+    font-size: 32px;
+}
+
+.moveBtn{
+    background-color: hsl(0, 0%, 70%);
+    z-index: 11;
+}
+
+.moveBtn:hover{
+    background-color: hsl(0, 0%, 85%);
+}
+
+.moveBtn:active{
+    background-color: hsl(0, 0%, 100%);
+}

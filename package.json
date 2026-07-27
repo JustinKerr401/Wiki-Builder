@@ -1,0 +1,31 @@
+{
+  "name": "strong-wizard-wiki",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "startDev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustinKerr401/Strong-Wizard-Wiki.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JustinKerr401/Strong-Wizard-Wiki/issues"
+  },
+  "homepage": "https://github.com/JustinKerr401/Strong-Wizard-Wiki#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "imap-simple": "^5.1.0",
+    "imapflow": "^1.2.18",
+    "mailparser": "^3.9.6",
+    "mongodb": "^7.1.1",
+    "mongoose": "^9.3.3",
+    "multer": "^2.0.2",
+    "nodemon": "^3.1.11"
+  }
+}

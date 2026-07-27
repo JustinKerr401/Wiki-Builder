@@ -1,0 +1,12 @@
+h1, h2, h3{
+    font-family: MedievalSharp;
+}
+
+#searchQueryResult{
+    font-family: Arial;
+    color: hsl(196, 100%, 20%);
+}
+
+p{
+    line-height: 1.8;
+}

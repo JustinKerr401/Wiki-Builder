@@ -1,0 +1,120 @@
+body{
+    background-image: url("../images/background_image.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+main{
+    margin: 50px 50px;
+    background-color: white;
+    padding: 30px;
+    overflow: hidden;
+    font-size: 1.1rem;
+    font-family: helvetica, arial, sans-serif;
+}
+
+#top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cover{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid hsl(0, 0%, 0%, .3);
+    width: 30%;
+    text-align: center;
+    background-color: hsl(0, 0%, 90%);
+    float: right;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+#cover h2{
+    background-color: hsl(0, 0%, 50%);
+    margin: 0px;
+}
+
+#cover h3{
+    background-color: hsl(0, 0%, 70%);
+    margin: 0px;
+}
+
+#cover dl{
+    display: grid;
+    grid-template-columns: 35% 65%;
+    margin: 0px;
+}
+
+#cover dl > *{
+    border: 1px solid hsl(0, 0%, 0%, .3);
+    margin: 0px;
+    padding: 3px 10px;
+    text-align: left;
+}
+
+#cover dt{
+    background-color: red;
+    color: white;
+}
+
+#cover dd{
+    color: black;
+}
+
+#contents p{
+    line-height: 1.75;
+}
+
+#contents #title{
+    font-size: 1.8rem;
+    font-weight: lighter;
+}
+
+#toc{
+    border: 1px solid hsl(0, 0%, 0%, .3);
+    border-radius: 5px;
+    width: 30%;
+    margin: 0px;
+}
+
+#toc i, #toc h4{
+    padding: 5px;
+    font-size: 1.1rem;
+}
+
+#section_links{
+    border-top: 1px solid hsl(0, 0%, 0%, .3);
+    padding: 5px;
+    line-height: 1.8;
+}
+
+#section_links a{
+    color: black;
+    text-decoration: none;
+    background-color: transparent;
+    transition: background-color 0.5s ease; /* fade over 0.5s */
+}
+
+#section_links a:hover{
+    background-color: hsl(198, 100%, 79%);
+}
+
+.variants{
+    display: flex;
+    justify-content: space-around;
+
+}
+.variants > button{
+    background-color: hsl(0, 0%, 90%);
+    border: none;
+    font-size: 1.3rem;
+    width: 50%;
+}
+
+.variants > button:hover{
+    background-color: hsl(198, 100%, 89%);
+}

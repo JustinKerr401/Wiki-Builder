@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Wiki</title>
+    <link rel="stylesheet" href="../css/selector.css">
+    <link rel="icon" href="../images/Wiki Builder Icon.png">
+</head>
+<body>
+
+    <main>
+        <img src="../images/Wiki Builder Logo.png" alt="Logo" id="logo">
+        <div class="button-row">
+            <div class="row-element">
+                <h1>Select Wiki</h1>
+                <select id="wikis" style="width: 200px;">
+                    <option value="">-- Select a Wiki --</option>
+                </select>
+            </div>
+            <div class="row-element">
+                <h1>Add Wiki</h1>
+                <input type=text placeholder="Enter new Wiki name" id="new_wiki">
+            </div>
+        </div>
+        <h2>Note: Pressing select will use the wiki listed in "Add Wiki", even if one is selected under "Select Wiki"!</h2>
+        <div class="buttons">
+            <button onclick="wikiSettings()">Wiki Settings</button>
+            <button onclick="redirect()">Continue</button>
+            <button onclick="togglePopup()">Delete Wiki</button>
+        </div>
+    </main>
+
+    <div id="delete-popup" class="popup-overlay">
+        <div class="popup">
+            <h2>Delete Wiki</h2>
+            <p>Are you sure you want to delete this wiki?</p>
+            <h3 id="currentWikiInquiry"></h3>
+
+            <button onclick="confirmDelete()">Delete</button>
+            <button onclick="togglePopup()">Cancel</button>
+        </div>
+    </div>
+
+    <script src="../js/selector.js"></script>
+</body>
+</html>

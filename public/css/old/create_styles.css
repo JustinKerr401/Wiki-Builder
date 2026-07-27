@@ -1,0 +1,76 @@
+/* ------------------------ Document wide formatting ------------------------ */
+body{
+    background-image: url("../images/background_image.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+main{
+    margin: 50px 50px;
+    overflow: hidden;
+    font-size: 1.1rem;
+    font-family: helvetica, arial, sans-serif;
+}
+/* ------------------------ Sections ------------------------ */
+section, #intro{
+    padding: 30px;
+    margin-bottom: 25px;
+    background-color: white;
+}
+
+.bigInput{
+    height: 32px;
+    font-size: 1.5rem;
+    width: 50%;
+}
+
+.midInput{
+    height: 25px;
+    font-size: 1.172rem
+}
+
+textarea{
+    width: 97%;
+    height: 100px;
+    box-sizing: border-box;
+    margin: 10px 0px;
+}
+
+.maintenancePart{
+    display: flex;
+    flex-direction: row;
+    gap: 20px 20px;
+    justify-content: center;
+    align-items: center;
+}
+/* ------------------------ Maintenance ------------------------ */
+#maintenance{
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+    row-gap: 30px;
+    flex-wrap: wrap;
+    background-color: hsl(0, 0%, 90%);
+}
+
+#maintenance > button{
+    font-size: 5rem;
+    border: none;
+    background-color: hsl(180, 100%, 94%, .5);
+    border-radius: 20px;
+}
+
+#maintenance > button:hover{
+    background-color: hsl(180, 100%, 94%)
+}
+
+i{
+    color: red;
+    font-size: 1.1rem;
+    margin-left: 100px;
+}
