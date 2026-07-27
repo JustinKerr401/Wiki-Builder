@@ -1,5 +1,6 @@
 # Environment variables
 .env
+steps.md
 
 # Images
 public/images/*
@@ -7,4 +8,3 @@ public/images/*
 !public/images/Wiki Builder Icon.png
 !public/images/bar.png
 !public/images/Question mark.png
-steps.md
