@@ -6,6 +6,7 @@ const multer = require('multer')
 const router = express.Router();
 const ExportModel = require('../models/Export');
 const { default: mongoose } = require('mongoose');
+const { askOllama, buildContext } = require('../services/chatbotConnection');
 
 const uploadPath = path.join(__dirname, '../public/images');
 
@@ -604,6 +605,10 @@ router.delete('/deleteWiki', async (req, res) => {
   }
 });
 
+router.get('/chatbot', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/html/chatbot.html'));
+});
+
 
 // ------------------------ Placeholder routes ------------------------
 
@@ -764,6 +769,66 @@ router.get('/contents/:title', async (req, res) => {
     res.status(500).json({error: 'Server error', details:  error.message})
   }
 })
+
+// Chat with wiki AI
+router.post('/chat', async (req, res) => {
+    try {
+        const { question } = req.body;
+
+        if (!question) {
+            return res.status(400).json({
+                error: "No question provided"
+            });
+        }
+
+        const currentWiki = await getCurrentWiki();
+
+        const pages = await ExportModel.find(
+            {
+                $text: {
+                    $search: question
+                },
+                wiki: currentWiki
+            },
+            {
+                title: 1,
+                bio: 1,
+                searchText: 1,
+                score: {
+                    $meta: "textScore"
+                }
+            }
+        )
+        .sort({
+            score: {
+                $meta: "textScore"
+            }
+        })
+        .limit(5);
+
+
+        const context = buildContext(pages);
+
+        const answer = await askOllama(
+            question,
+            context
+        );
+
+        res.json({
+            answer,
+            sources: pages.map(page => page.title)
+        });
+
+    } catch (err) {
+        console.error("Chat error:", err);
+
+        res.status(500).json({
+            error: "Failed to process chat request",
+            details: err.message
+        });
+    }
+});
+
 
 // ------------------------ Export router
 

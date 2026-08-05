@@ -23,6 +23,7 @@
     "imap-simple": "^5.1.0",
     "imapflow": "^1.2.18",
     "mailparser": "^3.9.6",
+    "marked": "^18.0.9",
     "mongodb": "^7.1.1",
     "mongoose": "^9.3.3",
     "multer": "^2.0.2",

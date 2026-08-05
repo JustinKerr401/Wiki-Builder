@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wiki Chatbot</title>
+    <style>
+        .loading {
+            font-style: italic;
+        }
+
+        .dots::after {
+            content: "";
+            animation: dots 1.5s infinite;
+        }
+
+        @keyframes dots {
+            0% {
+                content: "";
+            }
+            25% {
+                content: ".";
+            }
+            50% {
+                content: "..";
+            }
+            75% {
+                content: "...";
+            }
+            100% {
+                content: "";
+            }
+        }
+
+        .ai-response {
+            white-space: pre-line;
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+        }
+
+        .ai-response ul, .ai-response ol, strong{
+            margin: 0px;
+        }
+        
+        #question{
+            width: 80%;
+        }
+        </style>
+</head>
+
+<body>
+
+<h1>Wiki Assistant</h1>
+
+<div id="chat"></div>
+
+<input id="question" placeholder="Ask something..." />
+<br>
+<button onclick="ask()">Send</button>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="../js/chatbot.js"></script>
+
+</body>
+</html>
