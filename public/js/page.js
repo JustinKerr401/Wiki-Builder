@@ -158,6 +158,10 @@ async function buildPage(page){
                     sectionOb.appendChild(element)
                     for (let item of value){
                         const li = document.createElement("li")
+                        if (item.startsWith("*")) {
+                            li.classList.add("new")
+                            item = item.slice(1)
+                        }
                         li.textContent = item
                         element.appendChild(li)
                     }
@@ -167,6 +171,10 @@ async function buildPage(page){
                     sectionOb.appendChild(element)
                     for (let item of value){
                         const li = document.createElement("li")
+                        if (item.startsWith("*")) {
+                            li.classList.add("new")
+                            item = item.slice(1)
+                        } 
                         li.textContent = item
                         element.appendChild(li)
                     }
@@ -287,6 +295,7 @@ function updateTOC(){
                 break
             case 2:
                 tree[1]++
+                tree[2] = 0
                 header.id = `${tree[0]}.${tree[1]}.`
                 padding = "25px"
                 break

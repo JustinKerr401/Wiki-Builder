@@ -145,3 +145,7 @@ section img{
 ul, ol{
     line-height: 1.8
 }
+
+.new{
+    background-color: hsl(60, 100%, 95%);
+}
