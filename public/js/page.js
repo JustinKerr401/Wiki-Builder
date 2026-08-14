@@ -187,6 +187,10 @@ async function buildPage(page){
                     }
                     break
                 case "p":
+                    if (lastElement == "i"){
+                        sectionOb.appendChild(document.createElement("br"))
+                        sectionOb.appendChild(document.createElement("br"))
+                    }
                     element = document.createElement("a")
                     element.href = `/${value}`
                     element.style.position = "relative"
