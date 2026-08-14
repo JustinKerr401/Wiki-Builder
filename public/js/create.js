@@ -355,7 +355,7 @@ function buildPage(page){
                 case 't':
                     addToSection('text', reference).value = value
                     break
-            }console.log("Added element! -- ", key.charAt(0))
+            }
         }
     }
 

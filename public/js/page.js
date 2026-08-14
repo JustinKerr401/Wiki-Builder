@@ -83,7 +83,7 @@ async function buildPage(page){
         })
         if (coverImageSwaps.children.length < 2) coverImageSwaps.parentElement.removeChild(coverImageSwaps)
     } catch (error){
-
+        
     }
         // Add each cover section
     for (let section of page.coverInfo){
@@ -109,6 +109,8 @@ async function buildPage(page){
         // Track index so that I know when to add an "hr" element (after every section BUT the last one)
     let index = 0;
     for (let section of page.sections){
+        // Track last element
+        let lastElement = ""
         // Add the section to DOM
         const sectionOb = document.createElement("section")
         main.appendChild(sectionOb)
@@ -136,6 +138,11 @@ async function buildPage(page){
                     sectionOb.appendChild(element)
                     break
                 case "i":
+                    console.log(lastElement)
+                    if (lastElement == "p"){
+                        sectionOb.appendChild(document.createElement("br"))
+                        sectionOb.appendChild(document.createElement("br"))
+                    } 
                     element = document.createElement("img")
                     element.src = `../images/${value[1]}`
                     element.style.maxWidth = "45%"
@@ -187,12 +194,16 @@ async function buildPage(page){
 
                     const linkPicture = document.createElement("img")
                     const response = await fetch(`/contents/${value}`);
-                    const refPage = await response.json()
-                    try{
-                        linkPicture.src = `../images/${Object.values(refPage.coverImages)[0]}`
-                    } catch (er){
+                    console.log(response)
+
+                    if (!response.ok){
                         linkPicture.src = `../images/Question mark.png`
+                    }else{
+                        const refPage = await response.json()
+                        if (refPage.coverImages && Object.keys(refPage.coverImages).length > 0) linkPicture.src = `../images/${Object.values(refPage.coverImages)[0]}`
+                        else linkPicture.src = "../images/Question mark.png"
                     }
+
                     linkPicture.style.width = "200px"
                     linkPicture.style.height = "200px"
                     linkPicture.style.objectFit = "cover"
@@ -222,7 +233,7 @@ async function buildPage(page){
                     element.classList.add("textArea")
                     sectionOb.appendChild(element)
                     break
-            }
+            }lastElement = key.charAt(0)
         }
         if (index < page.sections.length - 1){
             const hr = document.createElement("hr")
