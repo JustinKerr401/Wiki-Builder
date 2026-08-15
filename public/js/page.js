@@ -198,7 +198,6 @@ async function buildPage(page){
 
                     const linkPicture = document.createElement("img")
                     const response = await fetch(`/contents/${value}`);
-                    console.log(response)
 
                     if (!response.ok){
                         linkPicture.src = `../images/Question mark.png`

@@ -20,13 +20,58 @@
             <a href="/chatbot">Wiki AI Assistant</a>
         </div>
         
-        <h1>Background image</h1>
-        <input type="file" id="background-image">
+        <div id="fontSelectorDiv">
+            <h1>Font selector</h1>
+            <select id="headerFont">
+                <option value="" selected></option>
+                <option value="Almendra">Almendra</option>
+                <option value="Almendra SC">Almendra SC</option>
+                <option value="Berkshire Swash">Berkshire Swash</option>
+                <option value="Bodoni Moda">Bodoni Moda</option>
+                <option value="Cinzel">Cinzel</option>
+                <option value="Cormorant Garamond">Cormorant Garamond</option>
+                <option value="Eagle Lake">Eagle Lake</option>
+                <option value="EB Garamond">EB Garamond</option>
+                <option value="Grenze">Grenze</option>
+                <option value="Grenze Gotisch">Grenze Gotisch</option>
+                <option value="IM FELL English">IM FELL English</option>
+                <option value="IM FELL English SC">IM FELL English SC</option>
+                <option value="Libre Baskerville">Libre Baskerville</option>
+                <option value="Lora">Lora</option>
+                <option value="Macondo">Macondo</option>
+                <option value="Macondo Swash Caps">Macondo Swash Caps</option>
+                <option value="MedievalSharp">MedievalSharp</option>
+                <option value="Montserrat">Montserrat</option>
+                <option value="Open Sans">Open Sans</option>
+                <option value="Oswald">Oswald</option>
+                <option value="Pirata One">Pirata One</option>
+                <option value="Playfair Display">Playfair Display</option>
+                <option value="Poppins">Poppins</option>
+                <option value="Quicksand">Quicksand</option>
+                <option value="Raleway">Raleway</option>
+                <option value="Roboto">Roboto</option>
+                <option value="Ubuntu">Ubuntu</option>
+                <option value="Uncial Antiqua">Uncial Antiqua</option>
+                <option value="UnifrakturCook">UnifrakturCook</option>
+                <option value="UnifrakturMaguntia">UnifrakturMaguntia</option>
+            </select>
+            <button id="submitFont" onclick="submitFont()">Submit</button>
+        </div>
+        
+        <br><br>
 
-        <h1>Logo</h1>
-        <input type="file" id="logo-upload">
+        <div id="imageSettings">
+            <h1>Background image</h1>
+            <input type="file" id="background-image">
 
-        <button id="submit" onclick="submit()">Submit</button>
+            <h1>Logo</h1>
+            <input type="file" id="logo-upload">
+
+            <button id="submitImages" onclick="submitImages()">Submit</button>
+        </div>
+
+        <br><br>
+        
 
     </main>
 

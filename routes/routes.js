@@ -262,6 +262,15 @@ router.post('/selectWiki', async (req, res) => {
       }
     );
 
+    // If currentWiki isn't in WikiSettings, generate it
+    const present = await db.collection('WikiSettings').findOne({wiki: wikiName})
+    if (!present){
+      await db.collection('WikiSettings').insertOne({
+        wiki: wikiName,
+        font: "Oswald"
+      })
+    }
+
     if (result.matchedCount === 0) {
       return res.status(404).json({ error: 'Settings document not found' });
     }
@@ -327,8 +336,8 @@ router.get('/getCurrentWiki', async (req, res) => {
   }
 });
 
-// Save wiki settings images
-router.post('/saveWikiSettings', async (req, res) => {
+// Save wiki images
+router.post('/saveWikiImages', async (req, res) => {
   try {
     const { filenames } = req.body;
 
@@ -441,6 +450,9 @@ router.get('/wikiSettings', async (req, res) => {
 // Delete the current wiki
 router.delete('/deleteWiki', async (req, res) => {
   try {
+    const wikiToDelete = req.body.selectedWiki
+    console.log(wikiToDelete)
+    
     const db = mongoose.connection.db;
 
     // Get current wiki
@@ -449,6 +461,7 @@ router.delete('/deleteWiki', async (req, res) => {
     if (!settings || !settings.currentWiki) {
       return res.status(400).json({ error: "No wiki selected" });
     }
+
 
     const currentWiki = settings.currentWiki;
 
@@ -608,6 +621,47 @@ router.delete('/deleteWiki', async (req, res) => {
 router.get('/chatbot', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/html/chatbot.html'));
 });
+
+router.post('/saveFont', async (req, res) => {
+  const selectedFont = req.body.font
+  const db = mongoose.connection.db;
+
+  //Get current wiki
+  const settings = await db.collection('Settings').findOne({});
+  const currentWiki = settings.currentWiki;
+
+  // Update the font
+  await db.collection('WikiSettings').updateOne(
+    { wiki: currentWiki },
+    {
+      $set: {
+        wiki: currentWiki,
+        font: selectedFont
+      }
+    },
+    {
+      upsert: true
+    }
+  );
+
+    res.json({
+      success: true
+    });
+
+})
+
+router.get('/currentWikiFont', async (req, res) => {
+  const db = mongoose.connection.db;
+
+  //Get current wiki
+  const settings = await db.collection('Settings').findOne({});
+  const currentWiki = settings.currentWiki;
+  // Get font of current wiki
+  const wikiSettings = await db.collection('WikiSettings').findOne({wiki: currentWiki})
+  const font = wikiSettings.font
+
+  res.json({ wikiFont: font });
+})
 
 
 // ------------------------ Placeholder routes ------------------------

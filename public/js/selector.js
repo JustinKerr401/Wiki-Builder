@@ -43,7 +43,6 @@ async function redirect(){
                 wikiName: addedWiki
             })
         });
-        window.location.href = "/Home";
     } else if (selectedWiki != ""){
         await fetch('/selectWiki', {
             method: 'POST',
@@ -54,8 +53,7 @@ async function redirect(){
                 wikiName: selectedWiki
             })
         });
-        window.location.href = "/Home";
-    }
+    }window.location.href = "/Home";
     
 }
 
@@ -75,12 +73,16 @@ async function wikiSettings(){
 
 async function togglePopup(){
     try{
-        const response = await fetch('/getCurrentWiki')
-        if (!response.ok){
-            throw new Error('Failed to fetch wiki names')
+        if (wikis.value != ""){
+            document.getElementById("currentWikiInquiry").textContent = wikis.value
+        } else {
+            const response = await fetch('/getCurrentWiki')
+            if (!response.ok){
+                throw new Error('Failed to fetch wiki names')
+            }
+            const currentWiki = await response.json()
+            document.getElementById("currentWikiInquiry").textContent = currentWiki
         }
-        const currentWiki = await response.json()
-        document.getElementById("currentWikiInquiry").textContent = currentWiki
     } catch (err){
         console.log(err)
     } finally {
@@ -91,8 +93,21 @@ async function togglePopup(){
 
 async function confirmDelete() {
     try {
+        let wiki = ""
+        if (wikis.value != ""){
+            wiki = wikis.value
+        } else {
+            wiki = "current"
+        }
+        
         const response = await fetch('/deleteWiki', {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                selectedWiki: wiki
+            })
         });
 
         const result = await response.json();

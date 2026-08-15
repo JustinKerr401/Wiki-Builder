@@ -11,7 +11,7 @@ async function init(){
 
 init()
 
-async function submit(){
+async function submitImages(){
     try{
         const background = document.getElementById("background-image").files[0];
         const logo = document.getElementById("logo-upload").files[0];
@@ -38,7 +38,7 @@ async function submit(){
         const result = await response.json();
         const filenames = result.files
 
-        await fetch('/saveWikiSettings', {
+        await fetch('/saveWikiImages', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -48,7 +48,34 @@ async function submit(){
             })
         });
 
-        window.location.href='/Home'
+        window.alert("Background image and logo saved!")
+        window.location.href='/wiki%20settings'
+    } catch (err){
+        alert(err)
+    }
+    
+    
+}
+
+async function submitFont(){
+    try{
+        const chosenFont = document.getElementById("headerFont").value
+        console.log(chosenFont)
+        if (chosenFont != "") {
+            await fetch('/saveFont', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    font: chosenFont
+                })
+            })
+            window.alert("Font successfully changed!")
+            window.location.href='/wiki%20settings'
+        } else {
+            window.alert("Choose a font to submit")
+        }
     } catch (err){
         alert(err)
     }

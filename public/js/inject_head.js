@@ -13,10 +13,25 @@ async function init(){
     icon.href = `../images/Wiki Builder Icon.png`
     document.head.appendChild(icon)
 
-    // Medievel Font
+    // Font
+        // Get the font and add reference to header
+    const wikiFontResponse = await fetch('/currentWikiFont')
+    const wikiFont = await wikiFontResponse.json()
+    const fontUrlName = wikiFont.wikiFont.replace(/ /g, '+');
+
     const font = document.createElement("style")
-    font.textContent = "@import url('https://fonts.googleapis.com/css2?family=Macondo&family=MedievalSharp&display=swap')"
+    font.textContent = `
+        @import url('https://fonts.googleapis.com/css2?family=${fontUrlName}&display=swap');
+    `;
     document.head.appendChild(font)
+        // Add font to headers
+    const headerFont = document.createElement("style")
+    headerFont.textContent = `
+        h1, h2, h3, h4, #header a{
+            font-family: ${wikiFont.wikiFont}
+        }
+    `;
+    document.head.appendChild(headerFont)
 
     // Style sheet
     const styles = document.createElement("link")
