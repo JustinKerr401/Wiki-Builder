@@ -450,26 +450,27 @@ router.get('/wikiSettings', async (req, res) => {
 // Delete the current wiki
 router.delete('/deleteWiki', async (req, res) => {
   try {
-    const wikiToDelete = req.body.selectedWiki
-    console.log(wikiToDelete)
+    let wikiToDelete = req.body.selectedWiki
+    console.log("Selected wiki: ", wikiToDelete)
     
     const db = mongoose.connection.db;
 
-    // Get current wiki
-    const settings = await db.collection('Settings').findOne({});
+    // Get current wiki if needed
+    if (wikiToDelete == "current"){
+      const settings = await db.collection('Settings').findOne({});
+      if (!settings || !settings.currentWiki) {
+        return res.status(400).json({ error: "No wiki selected" });
+      }
 
-    if (!settings || !settings.currentWiki) {
-      return res.status(400).json({ error: "No wiki selected" });
+      wikiToDelete = settings.currentWiki;
     }
-
-
-    const currentWiki = settings.currentWiki;
+    
 
     // -------------------------
     // Find all pages for wiki
     // -------------------------
     const pages = await db.collection('pages')
-      .find({ wiki: currentWiki })
+      .find({ wiki: wikiToDelete })
       .toArray();
 
 
@@ -545,7 +546,7 @@ router.delete('/deleteWiki', async (req, res) => {
     // Delete pages
     // -------------------------
     const pagesDeleted = await db.collection('pages').deleteMany({
-      wiki: currentWiki
+      wiki: wikiToDelete
     });
 
 
@@ -553,7 +554,7 @@ router.delete('/deleteWiki', async (req, res) => {
     // Delete WikiSettings images
     // -------------------------
     const wikiSettings = await db.collection('WikiSettings').findOne({
-      wiki: currentWiki
+      wiki: wikiToDelete
     });
 
 
@@ -582,7 +583,7 @@ router.delete('/deleteWiki', async (req, res) => {
 
     // Delete wiki settings
     const settingsDeleted = await db.collection('WikiSettings').deleteMany({
-      wiki: currentWiki
+      wiki: wikiToDelete
     });
 
 
@@ -593,7 +594,7 @@ router.delete('/deleteWiki', async (req, res) => {
       {},
       {
         $set: {
-          currentWiki: ""
+          wikiToDelete: ""
         }
       }
     );
@@ -601,7 +602,7 @@ router.delete('/deleteWiki', async (req, res) => {
 
     res.json({
       success: true,
-      message: `Deleted wiki: ${currentWiki}`,
+      message: `Deleted wiki: ${wikiToDelete}`,
       pagesDeleted: pagesDeleted.deletedCount,
       settingsDeleted: settingsDeleted.deletedCount,
       imagesDeleted: pageImages.size
