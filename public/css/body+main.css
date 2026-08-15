@@ -23,7 +23,6 @@ header{
 }
 
 .searchLink, .searchLink:visited{
-    font-family: MedievalSharp;
     color: #0C56A4;
     text-decoration: none;
     font-size: 1.5rem;

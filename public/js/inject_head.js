@@ -27,7 +27,7 @@ async function init(){
         // Add font to headers
     const headerFont = document.createElement("style")
     headerFont.textContent = `
-        h1, h2, h3, h4, #header a{
+        h1, h2, h3, h4, #header a, .searchLink, .searchLink:visited{
             font-family: ${wikiFont.wikiFont}
         }
     `;
