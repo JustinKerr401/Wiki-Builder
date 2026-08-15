@@ -7,6 +7,11 @@ async function init(){
 
         document.getElementById("header").textContent = currentWiki + " Settings"
 
+        const wikiFontRequest = await fetch('currentWikiFont')
+        const font = await wikiFontRequest.json()
+        console.log(font)
+        document.getElementById("headerFont").value = font.wikiFont
+
 }
 
 init()
