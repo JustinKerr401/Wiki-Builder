@@ -88,6 +88,11 @@ async function init(){
     create.textContent = "Create a Page"
     create.href = "/create%20page"
     header.appendChild(create)
+    // See all pages
+    const graph = document.createElement("a")
+    graph.textContent = "Pages Graph"
+    graph.href = "/graph"
+    header.appendChild(graph)
     // Wiki selector icon
     const wikiSelector = document.createElement("i")
     wikiSelector.classList.add("fa-solid", "fa-gear", "fa-3x")
