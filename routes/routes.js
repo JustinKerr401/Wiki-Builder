@@ -357,25 +357,27 @@ router.post('/saveWikiImages', async (req, res) => {
       wiki: currentWiki
     });
 
-    // Delete files before replacing them
-    if (currentWikiSettings) {
+    // Delete backgroundImage if it exists
+    if (currentWikiSettings["background-image"]){
       const backgroundPath = path.join(
         __dirname,
         '../public/images',
         currentWikiSettings["background-image"]
       );
 
+      // Delete background image if it exists
+      if (fs.existsSync(backgroundPath)) {
+        fs.unlinkSync(backgroundPath);
+      }
+    }
+    // Delete logo if it exists
+    if (currentWikiSettings["logo"]){
       const logoPath = path.join(
         __dirname,
         '../public/images',
         currentWikiSettings.logo
       );
-
-      // Delete background image if it exists
-      if (fs.existsSync(backgroundPath)) {
-        fs.unlinkSync(backgroundPath);
-      }
-
+      
       // Delete logo if it exists
       if (fs.existsSync(logoPath)) {
         fs.unlinkSync(logoPath);
