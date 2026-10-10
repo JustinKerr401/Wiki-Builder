@@ -71,13 +71,21 @@ textarea{
     border-radius: 10px;
 }
 
-#maintain > button:hover{
+#maintain > button:hover, #coverMaintenance > button:hover{
     background-color: hsl(180, 100%, 79%);
 }
 
 .textCursor {
     border: none;
     height: 6px;
+    background: black;
+    border-radius: 999px;
+}
+
+#sectionSelector{
+    border: white 4px solid;
+    width: 97%;
+    height: 16px;
     background: black;
     border-radius: 999px;
 }

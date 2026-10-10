@@ -16,15 +16,22 @@
     <div id="cover" class="sectiondiv">
         <h1>Cover</h1>
         <input type="file" multiple id="files" style="display: block">
+        <hr id="coverSelector">
         <div id="coverMaintenance">
+            <button onclick=upCover()>⯅</button>
             <button id="addCoverSection">Add cover section</button>
             <button id="addCoverData">Add data</button>
+            <button onclick=downCover()>⯆</button>
         </div>
     </div>
 
+    <hr id="sectionSelector">
+
     <div id="maintain" class="sectiondiv">
+        <button onclick=upSection() class="maintainArrow">⯅</button>
         <button id="addSection">Add Section</button>
         <button onclick="save()">Save</button>
+        <button onclick=downSection() class="maintainArrow">⯆</button>
     </div>
 
     <script src="../js/inject_head.js"></script>

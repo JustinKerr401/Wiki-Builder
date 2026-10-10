@@ -18,6 +18,7 @@ const coverMaintenance = document.getElementById("coverMaintenance")
 const files = document.getElementById("files")
 const addCoverSection = document.getElementById("addCoverSection")
 const addCoverData = document.getElementById("addCoverData")
+const coverSelector = document.getElementById("coverSelector")
 
     // Maintenance section
 const addSection = document.getElementById("addSection")
@@ -95,9 +96,9 @@ addCoverSection.addEventListener("click", () => {
     sectionTitle.classList.add("coverParse")
     sectionTitle.placeholder = "Enter cover section's title"
     sectionTitle.style.display = "inline"
-    addCoverSection.parentElement.parentElement.insertBefore(sectionTitle, coverMaintenance)
-    addCoverSection.parentElement.parentElement.insertBefore(removeIcon, coverMaintenance)
-    addCoverSection.parentElement.parentElement.insertBefore(document.createElement("br"), coverMaintenance)
+    coverSelector.parentElement.insertBefore(sectionTitle, coverSelector)
+    coverSelector.parentElement.insertBefore(removeIcon, coverSelector)
+    coverSelector.parentElement.insertBefore(document.createElement("br"), coverSelector)
 })
 
 // Add cover data
@@ -112,11 +113,30 @@ addCoverData.addEventListener("click", () => {
     labelInput.classList.add("coverParse")
     infoInput.classList.add("coverParse")
     infoInput.style.width = "70%"
-    addCoverSection.parentElement.parentElement.insertBefore(labelInput, coverMaintenance)
-    addCoverSection.parentElement.parentElement.insertBefore(infoInput, coverMaintenance)
-    addCoverSection.parentElement.parentElement.insertBefore(removeIcon, coverMaintenance)
-    addCoverSection.parentElement.parentElement.insertBefore(newlineBreak, coverMaintenance)
+    coverSelector.parentElement.insertBefore(labelInput, coverSelector)
+    coverSelector.parentElement.insertBefore(infoInput, coverSelector)
+    coverSelector.parentElement.insertBefore(removeIcon, coverSelector)
+    coverSelector.parentElement.insertBefore(newlineBreak, coverSelector)
 })
+
+function upCover(){
+    const coverDiv = document.getElementById("cover")
+    const condition = coverSelector.previousElementSibling.previousElementSibling.previousElementSibling
+    if (condition.placeholder == "Enter cover section's title"){
+        coverDiv.insertBefore(coverSelector, condition)
+    }else if (condition.placeholder == "Enter info"){
+        coverDiv.insertBefore(coverSelector, condition.previousElementSibling)
+    }
+}
+
+function downCover(){
+    const coverDiv = document.getElementById("cover")
+    if (coverSelector.nextElementSibling.placeholder == "Enter cover section's title"){
+        coverDiv.insertBefore(coverSelector, coverSelector.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling)
+    }else if (coverSelector.nextElementSibling.placeholder == "Enter label"){
+        coverDiv.insertBefore(coverSelector, coverSelector.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling)
+    }
+}
 
 // ------------------------ Load web page with data (if editing) ------------------------
 const pathParts = window.location.pathname.split('/');
@@ -367,8 +387,8 @@ function buildPage(page){
 function addSectionF(){
     // First, the section itself
     const section = document.createElement("section")
-    const reference = document.getElementById("maintain")
-    reference.parentElement.insertBefore(section, reference)
+    const sectionSelector = document.getElementById("sectionSelector")
+    sectionSelector.parentElement.insertBefore(section, sectionSelector)
     // Next, the header for the section
     const header = document.createElement("input")
     header.classList.add("bigInput")
@@ -713,6 +733,16 @@ function moveTextCursorDown(mainSect){
         condition.parentElement.insertBefore(textCursor, condition.nextElementSibling.nextElementSibling)
     }
     
+}
+
+function upSection(){
+    const bar = document.getElementById("sectionSelector")
+    if (bar.previousElementSibling.tagName == "SECTION") bar.parentElement.insertBefore(bar, bar.previousElementSibling)
+}
+
+function downSection(){
+    const bar = document.getElementById("sectionSelector")
+    if (bar.nextElementSibling.tagName == "SECTION") bar.parentElement.insertBefore(bar, bar.nextElementSibling.nextElementSibling)
 }
 
 // ------------------------ Saving ------------------------
