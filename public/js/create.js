@@ -282,9 +282,9 @@ function buildPage(page){
                 sectionTitle.placeholder = "Enter cover section's title"
                 sectionTitle.style.display = "inline"
                 sectionTitle.value = value
-                addCoverSection.parentElement.parentElement.insertBefore(sectionTitle, coverMaintenance)
-                addCoverSection.parentElement.parentElement.insertBefore(removeIcon, coverMaintenance)
-                addCoverSection.parentElement.parentElement.insertBefore(document.createElement("br"), coverMaintenance)
+                addCoverSection.parentElement.parentElement.insertBefore(sectionTitle, coverSelector)
+                addCoverSection.parentElement.parentElement.insertBefore(removeIcon, coverSelector)
+                addCoverSection.parentElement.parentElement.insertBefore(document.createElement("br"), coverSelector)
             } else {
                 const removeIcon = createRemoveIcon(2, 1)
                 
@@ -298,10 +298,10 @@ function buildPage(page){
                 infoInput.style.width = "70%"
                 labelInput.value = key
                 infoInput.value = value
-                addCoverSection.parentElement.parentElement.insertBefore(labelInput, coverMaintenance)
-                addCoverSection.parentElement.parentElement.insertBefore(infoInput, coverMaintenance)
-                addCoverSection.parentElement.parentElement.insertBefore(removeIcon, coverMaintenance)
-                addCoverSection.parentElement.parentElement.insertBefore(newlineBreak, coverMaintenance)
+                addCoverSection.parentElement.parentElement.insertBefore(labelInput, coverSelector)
+                addCoverSection.parentElement.parentElement.insertBefore(infoInput, coverSelector)
+                addCoverSection.parentElement.parentElement.insertBefore(removeIcon, coverSelector)
+                addCoverSection.parentElement.parentElement.insertBefore(newlineBreak, coverSelector)
             }
         }
     }
@@ -795,17 +795,19 @@ async function save(){
         })
             // B. Get all cover info
         let coverSection = {
-            header: ""
+            
         }
         const info = document.querySelectorAll(".coverParse")
+        // Iterate over everything in the cover you can type into
         info.forEach((element) => {
             switch (element.placeholder){
+                // Operate on element based on what it's placeholder is
                 case "Enter cover section's title":
                     if (element.value == "") throw new Error("Cover section header")
-                    if (coverSection.header !== ""){
+                    if (Object.keys(coverSection).length > 0){
                         jsonExport.coverInfo.push(coverSection)
                         coverSection = {
-                            header: ""
+                            
                         }
                     }
                     coverSection.header = element.value
@@ -902,6 +904,14 @@ async function save(){
             console.error('Save failed:', err);
             alert('Failed to save.');
         })
+
+        // Delete old web page if renamed
+        const titleCheck = document.title.split(": ")
+        if (titleCheck[1] !== titleInput.value){
+            const res = await fetch(`/delete/page/${titleCheck[1]}`, {
+                method: 'DELETE'
+            })
+        }
 
     } catch (error) {
         console.error(`Problem reading one of the following characters: \n${error}`)
