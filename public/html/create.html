@@ -27,14 +27,11 @@
     </div>
 
     <div id="sectionSelector">
-        <button onclick=upSection()>⯅</button>
+        <button onclick=upSection() class="sectionMovement">⯅</button>
+        <button id="addSection" class="maintenanceButton">Add Section</button>
         <p>Section Cursor</p>
-        <button onclick=downSection()>⯆</button>
-    </div>
-
-    <div id="maintain" class="sectiondiv">
-        <button id="addSection">Add Section</button>
-        <button onclick="save()">Save</button>
+        <button onclick="save()" class="maintenanceButton">Save</button>
+        <button onclick=downSection() class="sectionMovement">⯆</button>
     </div>
 
     <script src="../js/inject_head.js"></script>
