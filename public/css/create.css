@@ -85,7 +85,14 @@ textarea{
 #sectionSelector{
     border: white 4px solid;
     width: 97%;
-    height: 16px;
+    height: 25px;
     background: black;
     border-radius: 999px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+#sectionSelector > button{
+    border-radius: 50%;
 }
